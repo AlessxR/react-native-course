@@ -20,12 +20,19 @@ export default function HomeScreen() {
         <ThemedView style={styles.screen}>
             <SafeAreaView style={styles.content}>
                 <StatusBar
-                    barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
+                    barStyle={
+                        colorScheme === "dark"
+                            ? "light-content"
+                            : "dark-content"
+                    }
                 />
-                <ThemedText type="subtitle" style={styles.title}>
+                <ThemedText type="subtitle" style={{ color: "blue" }}>
                     Welcome to the App!
                 </ThemedText>
-                <ThemedText themeColor="textSecondary" style={styles.description}>
+                <ThemedText
+                    themeColor="textSecondary"
+                    style={styles.description}
+                >
                     Try entering a message below.
                 </ThemedText>
                 <TextInput
