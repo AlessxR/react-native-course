@@ -1,87 +1,71 @@
-import {
-    Button,
-    StatusBar,
-    StyleSheet,
-    TextInput,
-    useColorScheme,
-} from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-
-import { ThemedText } from "@/components/themed-text";
-import { ThemedView } from "@/components/themed-view";
-import { MaxContentWidth, Spacing } from "@/constants/theme";
-import { useTheme } from "@/hooks/use-theme";
+import { Button, Dimensions, StyleSheet, Text, View } from "react-native";
 
 export default function HomeScreen() {
-    const colorScheme = useColorScheme();
-    const theme = useTheme();
-
+    const width = Dimensions.get("window").width;
     return (
-        <ThemedView style={styles.screen}>
-            <SafeAreaView style={styles.content}>
-                <StatusBar
-                    barStyle={
-                        colorScheme === "dark"
-                            ? "light-content"
-                            : "dark-content"
-                    }
-                />
-                <ThemedText type="subtitle" style={{ color: "blue" }}>
-                    Welcome to the App!
-                </ThemedText>
-                <ThemedText
-                    themeColor="textSecondary"
-                    style={styles.description}
+        <View style={styles.container}>
+            <View style={styles.top}>
+                <Text style={styles.textStyle}>Hello World</Text>
+                <Button title="Press me" />
+            </View>
+            <View
+                style={{
+                    backgroundColor: "yellow",
+                    alignItems: "flex-end",
+                    height: 500,
+                    flexDirection: "row",
+                    gap: 10,
+                }}
+            >
+                <View
+                    style={{
+                        backgroundColor: "tomato",
+                        flexBasis: 100,
+                        width: width / 2 - 10,
+                        height: 100,
+                        flexGrow: 1,
+                    }}
                 >
-                    Try entering a message below.
-                </ThemedText>
-                <TextInput
-                    defaultValue="hello!"
-                    placeholder="Type something..."
-                    placeholderTextColor={theme.textSecondary}
-                    selectionColor={theme.text}
-                    style={[
-                        styles.input,
-                        {
-                            backgroundColor: theme.backgroundElement,
-                            borderColor: theme.backgroundSelected,
-                            color: theme.text,
-                        },
-                    ]}
-                />
-                <Button title="Press me!" />
-            </SafeAreaView>
-        </ThemedView>
+                    <Text>1</Text>
+                </View>
+                <View
+                    style={{
+                        backgroundColor: "purple",
+                        flexBasis: 100,
+                        width: width / 2 - 10,
+                        height: 100,
+                        flexGrow: 1,
+                    }}
+                >
+                    <Text>2</Text>
+                </View>
+                <View
+                    style={{
+                        backgroundColor: "green",
+                        flexBasis: 100,
+                        width: width / 2 - 10,
+                        height: 100,
+                        flexGrow: 1,
+                    }}
+                >
+                    <Text>3</Text>
+                </View>
+            </View>
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        alignItems: "center",
+    container: {
+        marginTop: 70,
     },
-    content: {
-        flex: 1,
-        width: "100%",
-        maxWidth: MaxContentWidth,
-        alignItems: "center",
-        justifyContent: "center",
-        padding: Spacing.four,
-        gap: Spacing.three,
-    },
-    title: {
-        textAlign: "center",
-    },
-    description: {
-        textAlign: "center",
-    },
-    input: {
-        width: "100%",
-        maxWidth: 440,
-        minHeight: 52,
-        paddingHorizontal: Spacing.three,
+    textStyle: {
+        color: "blue",
+        fontSize: 24,
         borderWidth: 1,
-        borderRadius: 14,
-        fontSize: 16,
+        borderColor: "blue",
+    },
+    top: {
+        flexDirection: "column-reverse",
     },
 });
