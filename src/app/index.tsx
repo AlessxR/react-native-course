@@ -1,55 +1,22 @@
-import { Button, Dimensions, StyleSheet, Text, View } from "react-native";
+import { Input } from "@/shared/Input/Input";
+import { Colors, Gaps } from "@/tokens";
+import { Button, Image, StyleSheet, Text, View } from "react-native";
 
 export default function HomeScreen() {
-    const width = Dimensions.get("window").width;
     return (
         <View style={styles.container}>
-            <View style={styles.top}>
-                <Text style={styles.textStyle}>Hello World</Text>
-                <Button title="Press me" />
-            </View>
-            <View
-                style={{
-                    backgroundColor: "yellow",
-                    alignItems: "flex-end",
-                    height: 500,
-                    flexDirection: "row",
-                    gap: 10,
-                }}
-            >
-                <View
-                    style={{
-                        backgroundColor: "tomato",
-                        flexBasis: 100,
-                        width: width / 2 - 10,
-                        height: 100,
-                        flexGrow: 1,
-                    }}
-                >
-                    <Text>1</Text>
+            <View style={styles.content}>
+                <Image
+                    style={styles.logo}
+                    source={require("../../assets/test-course-logo.png")}
+                    resizeMode="contain"
+                />
+                <View style={styles.form}>
+                    <Input placeholder="Email" />
+                    <Input placeholder="Password" />
+                    <Button title="Login" />
                 </View>
-                <View
-                    style={{
-                        backgroundColor: "purple",
-                        flexBasis: 100,
-                        width: width / 2 - 10,
-                        height: 100,
-                        flexGrow: 1,
-                    }}
-                >
-                    <Text>2</Text>
-                </View>
-                <View
-                    style={{
-                        backgroundColor: "green",
-                        flexBasis: 100,
-                        width: width / 2 - 10,
-                        height: 100,
-                        flexGrow: 1,
-                    }}
-                >
-                    <Text>3</Text>
-                </View>
+                <Text style={{ color: "#FFFFFF" }}>Recover password</Text>
             </View>
         </View>
     );
@@ -57,15 +24,24 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: 70,
+        justifyContent: "center",
+        flex: 1,
+        padding: 55,
+        backgroundColor: Colors.black,
     },
-    textStyle: {
-        color: "blue",
-        fontSize: 24,
+    content: {
+        width: "100%",
+        alignItems: "stretch",
+        gap: 20,
         borderWidth: 1,
-        borderColor: "blue",
     },
-    top: {
-        flexDirection: "column-reverse",
+    form: {
+        width: "100%",
+        gap: Gaps.g16,
+    },
+    logo: {
+        width: 170,
+        height: 170,
+        alignSelf: "center",
     },
 });
